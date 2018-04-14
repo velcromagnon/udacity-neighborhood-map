@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minneapolis Dining and Entertainment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts/lib/knockout-3.4.2.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="container">
+          <div title="show/hide locations" class="hamburger" data-bind="click: hamburgerClick">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+          <div class="title">
+            <span>Minneapolis Locations</span>
+          </div>
+        </div>
+      </div>
+      <div class="maplist container">
+        <div class="listings" data-bind="visible: displaySideBar">
+          <div class="container">
+            <input class="filterValue" data-bind="value: filterValue, valueUpdate: 'afterkeydown'" default="location"/>
+            <span class="filter">Filter</span>
+          </div>
+          <div class="all-locations container">
+            <ul data-bind="foreach: filteredLocations">
+              <li class="location" data-bind="text: name, click: $parent.handleClick" /></li>
+            </ul>
+          </div>
+        </div>
+        <div id="map" class="map" data-bind="css: {full: !displaySideBar()}"></div>
+      </div>
+    </div>
+    <script src="scripts/locations.js"></script>
+    <script src="scripts/app.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyAotN7m4DXDaQ353OI-y30gyL3tUqFCv2g&v=3&callback=initMap">
+    </script>
+  </body>
+</html>
