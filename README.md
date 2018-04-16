@@ -11,6 +11,7 @@ In addition, the user can choose to close the search bar to preserve space in a 
 
 # Setup
 Download or clone the repo [here](https://github.com/velcromagnon/udacity-neighborhood-map), open index.html in the root directory using the browser of your choice.
+
 Or you can run it directly from [here](https://velcromagnon.github.io/udacity-neighborhood-map/)
 
 # Attributions
