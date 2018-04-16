@@ -11,18 +11,30 @@ In addition, the user can choose to close the search bar to preserve space in a 
 
 # Setup
 Download or clone the repo [here](https://github.com/velcromagnon/udacity-neighborhood-map), open index.html in the root directory using the browser of your choice.
-Or you can run it directly from [here](some link)
+Or you can run it directly from [here](https://velcromagnon.github.io/udacity-neighborhood-map/)
 
 # Attributions
 Knockout Logic (Udacity Advanced JS Lesson 8)
+
 [Knockout tutorial - http://learn.knockoutjs.com/#/?tutorial=intro](http://learn.knockoutjs.com/#/?tutorial=intro)
+
 Map Logic (Udacity Advanced JS lesson 11)
-[Creating filtered lists - www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html](www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html)
+
+[Creating filtered lists - www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html](www.knockmeout.net/20
+11/04/utility-functions-in-knockoutjs.html)
+
 [Default text for input boxes - https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_placeholder](https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_placeholder)
+
 [Filter icon - https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-filter](https://www.w3schools.com/icons/tryit.asp?filename=tryicons_fa-filter)
+
 [Wikipedia access code - http://www.9bitstudios.com/2014/03/getting-data-from-the-wikipedia-api-using-jquery](http://www.9bitstudios.com/2014/03/getting-data-from-the-wikipedia-api-using-jquery)
+
 [Wikipedia attribution example -  https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple](https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple)
+
 [Click event listener - https://developers.google.com/maps/documentation/javascript/examples/marker-animations](https://developers.google.com/maps/documentation/javascript/examples/marker-animations)
+
 [Custom map icons - http://www.benjaminkeen.com/google-maps-coloured-markers/](http://www.benjaminkeen.com/google-maps-coloured-markers)
+
 [Removing map marker with search - https://stackoverflow.com/questions/29557938/removing-map-pin-with-search](https://stackoverflow.com/questions/29557938/removing-map-pin-with-search)
+
 [Making location list take up 100% of height - https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space](https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space)
