@@ -20,7 +20,7 @@ Knockout Logic (Udacity Advanced JS Lesson 8)
 
 Map Logic (Udacity Advanced JS lesson 11)
 
-[Creating filtered lists - www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html](www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html)
+[Creating filtered lists - http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html](http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html)
 
 [Default text for input boxes - https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_placeholder](https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_input_placeholder)
 
