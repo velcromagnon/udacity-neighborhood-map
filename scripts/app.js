@@ -8,6 +8,11 @@ var minneapolisLocation = {
   lng: -93.258133
 };
 
+// Error handler in case the map does not load.
+function googleError(message) {
+  alert("There was an error loading Google Maps.\nPlease check your Internet connection and try again.\n\nYou may find additional error information in the JavaScript console window.");
+}
+
 // Create the map and initiate knockout binding.
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
