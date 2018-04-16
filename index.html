@@ -6,10 +6,11 @@
     <title>Minneapolis Dining and Entertainment</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="scripts/lib/knockout-3.4.2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <div class="container">
+    <div class="container-vert">
       <div class="header">
         <div class="container">
           <div title="show/hide locations" class="hamburger" data-bind="click: hamburgerClick">
@@ -22,19 +23,23 @@
           </div>
         </div>
       </div>
-      <div class="maplist container">
-        <div class="listings" data-bind="visible: displaySideBar">
-          <div class="container">
-            <input class="filterValue" data-bind="value: filterValue, valueUpdate: 'afterkeydown'" default="location"/>
-            <span class="filter">Filter</span>
+      <div class="row content">
+        <div class="main">
+          <div class="sidebar" data-bind="visible: displaySideBar">
+            <div class="container-vert">
+              <div class="container">
+                <input class="filter-value" data-bind="value: filterValue, valueUpdate: 'afterkeydown'" placeholder="Filter on Location"/>
+                <i class="fa fa-filter filter-icon"></i>
+              </div>
+              <div class="all-locations">
+                <ul data-bind="foreach: filteredLocations">
+                  <li class="location" data-bind="text: name, click: $parent.handleClick" /></li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="all-locations container">
-            <ul data-bind="foreach: filteredLocations">
-              <li class="location" data-bind="text: name, click: $parent.handleClick" /></li>
-            </ul>
-          </div>
+          <div id="map" class="map" data-bind="css: {full: !displaySideBar()}"></div>
         </div>
-        <div id="map" class="map" data-bind="css: {full: !displaySideBar()}"></div>
       </div>
     </div>
     <script src="scripts/locations.js"></script>

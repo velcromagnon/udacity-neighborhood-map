@@ -11,54 +11,6 @@ body {
   overflow: hidden;
 }
 
-#pano {
-  width: 300px;
-  height: 200px;
-}
-
-.header {
-  background-color: black;
-  width: 100%;
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.listings {
-  width: 25%;
-  background-color: black;
- }
-
-.map {
-  width: 75%;
-  xheight: 100%;
-  height: 97vh;
-}
-
-.full
-{
-  width: 100%;
-}
-
-.filter {
-  color: white;
-  background-color: blue;
-  text-align: center;
-  margin: auto;
-  width: 25%;
-}
-
-.filter-value {
-  width: 75%;
-}
-
-.location {
-  color: #999;
-}
-
 h1 {
   background-color: black;
   color: gray;
@@ -66,11 +18,8 @@ h1 {
   padding: 10px;
 }
 
-.all-locations {
-  height:92vh;
-  width: 100%;
-  max-height: 100%;
-  overflow-y: auto;
+ul {
+  padding: 0;
 }
 
 li {
@@ -83,6 +32,55 @@ li:hover {
   color: white;
 }
 
+/* StreetView image */
+#pano {
+  width: 300px;
+  height: 200px;
+}
+
+/* Title and hamburger icon. */
+.header {
+  background-color: black;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Left side panel for listings */
+.listings {
+  width: 25%;
+  background-color: black;
+  height: 100%;
+ }
+
+/* Filter area */
+.filter {
+  color: white;
+  background-color: blue;
+  text-align: center;
+  margin: auto;
+  width: 25%;
+}
+
+.filter-value {
+  width: 80%;
+  margin: 80 auto;
+}
+
+.location {
+  color: #999;
+}
+
+.all-locations {
+  width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
 .title {
   width: 90%;
   color: #999;
@@ -90,7 +88,7 @@ li:hover {
   font-size: 3em;
 }
 
-// Hamburger icon
+/* Hamburger icon */
 .hamburger {
   display: inline-block;
   cursor: pointer;
@@ -103,4 +101,89 @@ li:hover {
   color: white;
   background-color: white;
   margin: 6px 0;
+}
+
+/* Handling for 100% height while still having flexbox logic inside. */
+.container-vert {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.container-vert .header {
+  flex: 0 1 auto;
+}
+
+.container-vert .content {
+  flex: 1 1 auto;
+  width: 100%;
+  display: table-cell;
+  vertical-align: top;
+  position:relative;
+}
+
+.container-vert .content .sidebar {
+  position:relative;
+  top:0;
+  bottom:0;
+  width:25%;
+  background-color: black;
+}
+
+.container-vert .content .main {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:100%;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Control the map for normal and full-screen mode. */
+.main .map {
+  position: relative;
+  width: 75%;
+  height: 100%;
+}
+
+.main .full
+{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.filter-icon {
+  font-size:24px;
+  color: #5050B5;
+}
+
+/* Make header font smaller for mobile devices. */
+@media screen and (max-width: 530px)
+{
+  .title {
+    font-size: 2em;
+  }
+}
+
+/* Tiny fonts for narrow displays. */
+@media screen and (max-width: 365px)
+{
+  .title {
+    font-size: 1em;
+  }
+  .bar {
+    width: 20px;
+    height: 3px;
+    margin: 3px 0;
+  }
+}
+
+/* Enlarge location fonts for large displays. */
+@media screen and (min-width: 1300px)
+{
+  li {
+    font-size: 1.3em;
+  }
 }

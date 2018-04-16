@@ -57,6 +57,7 @@ var Location = function(data) {
 
   this.isVisible = ko.observable(false);
 
+  // Set the visible status to change based on knockout event.
   this.isVisible.subscribe(function(currentState) {
     if (currentState) {
       self.marker.setMap(map);
@@ -65,9 +66,10 @@ var Location = function(data) {
     }
   });
 
+  // Handle click event on marker.
   this.handleClick = function() {
     if (infowindow.marker != self.marker)
-      toggleBounce(); // Turn it on if it's not already selected.
+     animateMarker(true); // bounce animation
     self.populateInfoWindow(self.marker, infowindow);
   };
 
@@ -75,13 +77,14 @@ var Location = function(data) {
   // from https://developers.google.com/maps/documentation/javascript/examples/marker-animations
   this.marker.addListener('click', this.handleClick);
 
+  // Populates infoWindow with the name, wikipedia info (if available) and StreetView(if available)
   this.populateInfoWindow = function(marker, infowindow) {
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
       // Clean up any previous listeners
       google.maps.event.clearListeners(infowindow, 'closeclick');
       infowindow.addListener('closeclick', function() {
-        toggleBounce();
+        animateMarker(false);
         infowindow.marker = null;
       });
       var radius = 50;
@@ -107,7 +110,7 @@ var Location = function(data) {
 
       // How to call wikipedia --> http://www.9bitstudios.com/2014/03/getting-data-from-the-wikipedia-api-using-jquery/
       // For attribution code --> https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
-      function getWiki(name) {
+      function getWikiAndStreetView(name) {
         var url = `http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=${name}&callback=?`;
         var content = '';
         // Cached return value.
@@ -151,27 +154,32 @@ var Location = function(data) {
         });
       }
 
-      getWiki(data.wikiname || data.name);
+      // Retrieve wiki blurb and street view image.
+      getWikiAndStreetView(data.wikiname || data.name);
 
+      // Open up the infowindow (and have it populate asynchronously)
       infowindow.open(map, marker);
     }
   };
 
+  // Try to center map based on available data.
   bounds.extend(this.marker.position);
 
-  function toggleBounce() {
+  // Either enable or disable the bouncing animation, and make sure to turn off animation for a previously chosen marker.
+  function animateMarker(bounce) {
     if (infowindow.marker && infowindow.marker !== self.marker)
       infowindow.marker.setAnimation(null);
-    if (self.marker.getAnimation() !== null) {
-      self.marker.setAnimation(null);
-    } else {
+    if (bounce)
       self.marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
+    else
+      self.marker.setAnimation(null);
   }
 
+  // Show the marker
   this.isVisible(true);
 };
 
+// View model based on knockout observables.
 var MapViewModel = function()
 {
   var self = this;
@@ -186,10 +194,12 @@ var MapViewModel = function()
   map.fitBounds(bounds);
 
   // Logic from www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
+  // Create a filtered list based on a partial string match.
   this.filteredLocations = ko.computed(function() {
     const search = self.filterValue().toLowerCase();
     return ko.utils.arrayFilter(this.locations(), function(location) {
       var match = location.name().toLowerCase().includes(search);
+      // Alert the location to handle a change (as it's watching this)
       location.isVisible(match);
       return match;
     });
@@ -200,9 +210,11 @@ var MapViewModel = function()
     location.handleClick();
   };
 
+  // Show or hide the sidebar, plus handle map.
   this.hamburgerClick = function() {
     this.displaySideBar(!this.displaySideBar());
+    // Need to resize and recenter map.
     google.maps.event.trigger(map, "resize");
+    map.fitBounds(bounds);
   };
-
 };
