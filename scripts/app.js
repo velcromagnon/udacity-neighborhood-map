@@ -116,7 +116,7 @@ var Location = function(data) {
       // How to call wikipedia --> http://www.9bitstudios.com/2014/03/getting-data-from-the-wikipedia-api-using-jquery/
       // For attribution code --> https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
       function getWikiAndStreetView(name) {
-        var url = `http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=${name}&callback=?`;
+        var url = `https://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=${name}&callback=?`;
         var content = '';
         // Cached return value.
         if (self.wikiResult != null)
